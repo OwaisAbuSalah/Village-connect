@@ -105,8 +105,8 @@ VillageConnect/
 ├── reports/
 │   ├── VillageConnect_Report_English.docx
 │   ├── VillageConnect_Report_English.pdf
-│   ├── VillageConnect_Report_Arabic.docx
-│   └── VillageConnect_Report_Arabic.pdf
+│   
+│   
 ├── configs/
 │   ├── cisco/
 │   │   ├── Core-Router.txt
