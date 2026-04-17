@@ -1,0 +1,58 @@
+!=============================================================
+! VillageConnect - Core Switch Configuration
+! Device: Core-Switch (Cisco IOSvL2)
+!=============================================================
+
+hostname Core-Switch
+!
+! Create VLANs
+vlan 10
+ name Admin
+vlan 20
+ name Public
+vlan 30
+ name Voice
+vlan 40
+ name Servers
+!
+! Uplink to Core-Router (Trunk)
+interface GigabitEthernet0/0
+ description Link to Core-Router
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan all
+ speed 100
+ duplex full
+ no shutdown
+!
+! Downlinks to Access Switches (Trunks)
+interface GigabitEthernet0/1
+ description Link to Switch-Admin
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan all
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description Link to Switch-Public
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan all
+ no shutdown
+!
+interface GigabitEthernet0/3
+ description Link to Switch-Voice
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan all
+ no shutdown
+!
+! Port for Village-Server (Access VLAN 40)
+interface GigabitEthernet1/1
+ description Link to Village-Server (Ubuntu via Cloud)
+ switchport mode access
+ switchport access vlan 40
+ no shutdown
+!
+end
+write memory

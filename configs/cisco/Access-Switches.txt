@@ -1,0 +1,66 @@
+!=============================================================
+! VillageConnect - Access Switches Configuration
+!=============================================================
+
+!============ Switch-Admin (VLAN 10) ============
+hostname Switch-Admin
+!
+vlan 10
+ name Admin
+!
+interface GigabitEthernet0/0
+ description Uplink to Core-Switch
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description PC-Admin
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+end
+write memory
+
+!============ Switch-Public (VLAN 20) ============
+hostname Switch-Public
+!
+vlan 20
+ name Public
+!
+interface GigabitEthernet0/0
+ description Uplink to Core-Switch
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description PC-Public
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+end
+write memory
+
+!============ Switch-Voice (VLAN 30) ============
+hostname Switch-Voice
+!
+vlan 30
+ name Voice
+!
+interface GigabitEthernet0/0
+ description Uplink to Core-Switch
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description IP-Phone
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+!
+end
+write memory
